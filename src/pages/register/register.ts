@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { HomePage } from '../home/home';
+import { BookListPage } from '../book-list/book-list';
 import { LoginPage } from '../login/login';
 
 /*
@@ -15,19 +15,13 @@ import { LoginPage } from '../login/login';
   templateUrl: 'register.html'
 })
 export class RegisterPage {
+	loginPage = LoginPage;
+  bookListPage = BookListPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
-  }
-
-  register(){
-  	this.navCtrl.setRoot(HomePage)
-  }
-
-  login(){
-  	this.navCtrl.setRoot(LoginPage)
   }
 
 }
