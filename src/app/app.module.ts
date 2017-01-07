@@ -6,6 +6,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { BookListPage } from '../pages/book-list/book-list';
+import { BookViewPage } from '../pages/book-view/book-view';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { BookListPage } from '../pages/book-list/book-list';
     HomePage,
     LoginPage,
     RegisterPage,
-    BookListPage
+    BookListPage,
+    BookViewPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -24,7 +26,8 @@ import { BookListPage } from '../pages/book-list/book-list';
     HomePage,
     LoginPage,
     RegisterPage,
-    BookListPage
+    BookListPage,
+    BookViewPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

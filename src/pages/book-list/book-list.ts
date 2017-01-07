@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { BookViewPage } from '../book-view/book-view';
+
 /*
   Generated class for the BookList page.
 
@@ -8,15 +10,17 @@ import { NavController, NavParams } from 'ionic-angular';
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-book-list',
-  templateUrl: 'book-list.html'
+	selector: 'page-book-list',
+	templateUrl: 'book-list.html'
 })
 export class BookListPage {
+	
+	bookViewPage = BookViewPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+	constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BookListPage');
-  }
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad BookListPage');
+	}
 
 }
