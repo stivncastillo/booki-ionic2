@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { HistoryFormPage } from '../history-form/history-form';
+import { HistoryViewPage } from '../history-view/history-view';
 
 /*
   Generated class for the BookView page.
@@ -15,7 +16,8 @@ import { HistoryFormPage } from '../history-form/history-form';
 })
 export class BookViewPage {
 
-	historyFormPage = HistoryFormPage;
+  historyFormPage = HistoryFormPage;
+	historyViewPage = HistoryViewPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 

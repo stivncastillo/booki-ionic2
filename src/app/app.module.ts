@@ -11,6 +11,7 @@ import { BookViewPage } from '../pages/book-view/book-view';
 import { BookFormPage } from '../pages/book-form/book-form';
 
 import { HistoryFormPage } from '../pages/history-form/history-form';
+import { HistoryViewPage } from '../pages/history-view/history-view';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HistoryFormPage } from '../pages/history-form/history-form';
     BookListPage,
     BookViewPage,
     BookFormPage,
-    HistoryFormPage
+    HistoryFormPage,
+    HistoryViewPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -35,7 +37,8 @@ import { HistoryFormPage } from '../pages/history-form/history-form';
     BookListPage,
     BookViewPage,
     BookFormPage,
-    HistoryFormPage
+    HistoryFormPage,
+    HistoryViewPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
