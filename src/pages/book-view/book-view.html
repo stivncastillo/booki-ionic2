@@ -8,12 +8,6 @@
 <ion-header>
 	<ion-navbar color="primary_color">
 		<ion-title>Book</ion-title>
-
-		<ion-buttons end>
-			<button ion-button icon-only>
-				<ion-icon name="add"></ion-icon>
-			</button>
-		</ion-buttons>
 	</ion-navbar>
 </ion-header>
 
@@ -29,7 +23,7 @@
 		</ion-card-content>
 	</ion-card>
 
-	<ion-list>
+	<ion-list inset>
 		<ion-list-header>
 			History
 		</ion-list-header>
@@ -37,6 +31,11 @@
 		<button ion-item> Martes 2 de Enero 2017 </button>
 		<button ion-item> Lunes 1 de Enero 2017 </button>
 		<button ion-item> Domingo 31 de Diciembre 2016 </button>
+		<button ion-item> View all </button>
 	</ion-list>
+
+	<ion-fab bottom right>
+	    <button ion-fab color="primary" [navPush]="historyFormPage"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
 
 </ion-content>
