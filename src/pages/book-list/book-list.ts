@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { BookViewPage } from '../book-view/book-view';
+import { BookFormPage } from '../book-form/book-form';
 
 /*
   Generated class for the BookList page.
@@ -16,6 +17,7 @@ import { BookViewPage } from '../book-view/book-view';
 export class BookListPage {
 	
 	bookViewPage = BookViewPage;
+	bookFormPage = BookFormPage;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
