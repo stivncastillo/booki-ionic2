@@ -15,7 +15,7 @@ export class Auth {
 
 	constructor(public http: Http) {
 		console.log('Hello Auth Provider');
-		this.url = 'http://booki.app/api/v1/';
+		this.url = 'http://booki-api.dev/api/v1/';
 	}
 
 	login(email:string, password:string, rememberme:boolean = false){
