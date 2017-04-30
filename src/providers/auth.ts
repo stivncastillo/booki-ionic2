@@ -35,6 +35,7 @@ export class Auth {
 						.do(
 							tokenData => {
 								localStorage.setItem('token', tokenData.data.api_token);
+								localStorage.setItem('user', JSON.stringify(tokenData.data.user));
 							}
 						);
 	}

@@ -50,10 +50,11 @@ export class LoginPage {
 		this._auth.login(this.email, this.password).subscribe(
 			result => {
 				if(result.success) {
-					console.log(result);
 					loader.dismissAll();
+					this.navCtrl.setRoot(BookListPage);
+				}else{
+					this.showError('An error has ocurred');
 				}
-				// this._router.navigate(['/']);
 			},
 
 			error => {
