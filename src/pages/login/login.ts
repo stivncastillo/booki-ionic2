@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 
 import { BookListPage } from '../book-list/book-list';
 import { RegisterPage } from '../register/register';
@@ -31,6 +31,7 @@ export class LoginPage {
 		public navCtrl: NavController,
 		public navParams: NavParams,
 		public alertCtrl: AlertController,
+		public loadingCtrl:LoadingController,
 		public _auth: Auth
 	) {}
 
@@ -40,22 +41,29 @@ export class LoginPage {
 
 	onLogin() {
 		this.validate();
-		/*this._auth.login(this.email, this.password).subscribe(
-			result => {
-				if( ! result.success) {
-					console.log('error');
-					console.log(result);
-				}
-				console.log(result);
 
+		let loader = this.loadingCtrl.create({
+			content: "Logging in..."
+		});
+		loader.present();
+
+		this._auth.login(this.email, this.password).subscribe(
+			result => {
+				if(result.success) {
+					console.log(result);
+					loader.dismissAll();
+				}
 				// this._router.navigate(['/']);
 			},
 
 			error => {
-				this.errorMessage = <any>error;
-				console.log(this.errorMessage);
+				loader.dismissAll();
+
+				let dataError = JSON.parse(error._body);
+				this.showError(dataError.errors[0]);
+				this.password = '';
 			}
-		);*/
+		);
 	}
 
 	validate() {
@@ -68,6 +76,17 @@ export class LoginPage {
 			alert.present();
 			return;
 		} 
+	}
+
+	showError(message:string) {
+		let alert = this.alertCtrl.create({
+			title: 'Error', 
+			subTitle: message,
+			buttons: ['OK']
+		});
+
+		alert.present();
+		return;
 	}
 
 }

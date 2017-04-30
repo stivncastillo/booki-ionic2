@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, URLSearchParams, QueryEncoder, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
+import 'rxjs/Rx';
 
 /*
   Generated class for the Auth provider.
