@@ -19,28 +19,10 @@
 
 <ion-content>
 	<ion-list>
-		<ion-item [navPush]="bookViewPage">
-			<h2>Cien Años de Soledad</h2>
-			<h3>Gabriel Garcia Marquez</h3>
+		<ion-item *ngFor="let book of books">
+			<h2>{{ book.name }}</h2>
+			<h3>{{ book.author }}</h3>
 			<p>60%</p>
-		</ion-item>
-
-		<ion-item>
-			<h2>El Quijote</h2>
-			<h3>José Cela</h3>
-			<p>70%</p>
-		</ion-item>
-
-		<ion-item>
-			<h2>El Coronel no tiene quien le escriba</h2>
-			<h3>Gabriel Garcia Marquez</h3>
-			<p>10%</p>
-		</ion-item>
-
-		<ion-item>
-			<h2>Rayuela</h2>
-			<h3>Julio Cortazar</h3>
-			<p>0%</p>
 		</ion-item>
 	</ion-list>
 
