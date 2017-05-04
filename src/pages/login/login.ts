@@ -51,7 +51,7 @@ export class LoginPage {
 			result => {
 				if(result.success) {
 					loader.dismissAll();
-					this.navCtrl.setRoot(BookListPage);
+					// this.navCtrl.setRoot(BookListPage);
 				}else{
 					this.showError('An error has ocurred');
 				}

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, URLSearchParams, QueryEncoder, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs';
+import { Http, Headers, URLSearchParams, RequestOptions } from '@angular/http';
+// import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 
@@ -15,11 +15,10 @@ export class Auth {
 	url: string;
 
 	constructor(public http: Http) {
-		this.url = 'http://booki-api.dev/api/v1/';
+		this.url = 'http://booki-backend.dev/api/v1/';
 	}
 
 	login(email:string, password:string, rememberme:boolean = false){
-		let params: URLSearchParams = new URLSearchParams();
 		let data = {
 			email: email,
 			password: password,
@@ -29,12 +28,11 @@ export class Auth {
 		let headers = new Headers({ 'Accept': 'application/json', 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });
 
-		return this.http.post(this.url + 'auth/login', data, options)
+		return this.http.post(this.url + 'login', data, options)
 						.map(res => res.json())
 						.do(
 							tokenData => {
-								localStorage.setItem('token', tokenData.data.api_token);
-								localStorage.setItem('user', JSON.stringify(tokenData.data.user));
+								localStorage.setItem('token', tokenData.data.token);
 							}
 						);
 	}
