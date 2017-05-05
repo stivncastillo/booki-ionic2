@@ -14,39 +14,35 @@
 
 
 <ion-content>
+	<form [formGroup]="formRegister" (ngSubmit)="onRegister()">
 		<ion-row>
 			<ion-col>
+					
 				<ion-list>
 					<ion-item>
-						<ion-label floating>Name</ion-label>
-						<ion-input type="text" [(ngModel)]="user.name"></ion-input>
+						<ion-label floating>First Name</ion-label>
+						<ion-input type="text" formControlName="first_name"></ion-input>
+					</ion-item>
+
+					<ion-item>
+						<ion-label floating>Last Name</ion-label>
+						<ion-input type="text" formControlName="last_name"></ion-input>
 					</ion-item>
 
 					<ion-item>
 						<ion-label floating>Email</ion-label>
-						<ion-input type="email" [(ngModel)]="user.email"></ion-input>
+						<ion-input type="email" formControlName="email"></ion-input>
 					</ion-item>
 
 					<ion-item>
 						<ion-label floating>Password</ion-label>
-						<ion-input type="password" [(ngModel)]="user.password"></ion-input>
+						<ion-input type="password" formControlName="password"></ion-input>
 					</ion-item>
 
 					<ion-item>
 						<ion-label floating>Confirm Password</ion-label>
-						<ion-input type="password" [(ngModel)]="user.confirm_password"></ion-input>
-					</ion-item>
-
-					<ion-list radio-group>
-						<ion-item>
-							<ion-label>Male</ion-label>
-							<ion-radio value="male" checked></ion-radio>
-						</ion-item>
-						<ion-item>
-							<ion-label>Female</ion-label>
-							<ion-radio value="female"></ion-radio>
-						</ion-item>
-					</ion-list>
+						<ion-input type="password" formControlName="confirm_password"></ion-input>
+					</ion-item> 
 
 				</ion-list>
 			</ion-col>
@@ -54,9 +50,10 @@
 
 		<ion-row>
 			<ion-col>
-				<button ion-button full (click)="registerUser()">Register</button>
+				<button ion-button full type="submit" [disabled]="!formRegister.valid">Register</button>
 				<button ion-button color="light" full type="button" [navPush]="loginPage">Sign In</button>
 			</ion-col>
 		</ion-row>
+	</form>
 
 </ion-content>

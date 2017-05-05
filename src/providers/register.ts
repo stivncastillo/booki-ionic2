@@ -17,41 +17,21 @@ export class Register {
 	public user: User;
 
 	constructor(public http: Http) {
-		this.user = new User(0, 'Juaco', '', '', '', '', '', '');
 		this.url = 'http://booki-backend.dev/api/v1/';
 
 	}
 
-	public registerUser(){
-		console.log(this.user);
-		/*let data = {
-			email: email,
-			password: password,
-			rememberme: rememberme
-		};
-
+	public register(user: User){
 		let headers = new Headers({ 'Accept': 'application/json', 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });
 
-		return this.http.post(this.url + 'login', data, options)
+		return this.http.post(this.url + 'register', user, options)
 						.map(res => res.json())
 						.do(
-							tokenData => {
-								localStorage.setItem('token', tokenData.data.token);
+							result => {
+								console.log(result);
 							}
-							);*/
-	}
-
-	isAuthenticated():boolean {
-		if (localStorage.getItem('token') === null){
-			return false;
-		}
-
-		return true;
-	}
-
-	getToken() {
-		return localStorage.getItem('token');
+						);
 	}
 
 }
