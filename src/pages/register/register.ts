@@ -45,7 +45,7 @@ export class RegisterPage {
 			last_name: ['', Validators.required],
 			email: ['', Validators.required],
 			password: ['', Validators.required],
-			confirm_password: ['', Validators.required]
+			password_confirmation: ['', Validators.required]
 		});
 	}
 
@@ -61,7 +61,7 @@ export class RegisterPage {
 		});
 		loader.present();
 
-    	this.user = new User(0, dataForm.first_name, dataForm.last_name, dataForm.email, dataForm.password, dataForm.confirm_password, '', '');
+    	this.user = new User(0, dataForm.first_name, dataForm.last_name, dataForm.email, dataForm.password, dataForm.password_confirmation, '', '');
 
     	this._register.register(this.user).subscribe(
 			result => {
