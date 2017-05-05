@@ -3,22 +3,28 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 
+import { User } from '../models/user';
+
 /*
-  Generated class for the Auth provider.
+  Generated class for the Register provider.
 
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class Auth {
+export class Register {
 	url: string;
+	public user: User;
 
 	constructor(public http: Http) {
+		this.user = new User(0, 'Juaco', '', '', '', '', '', '');
 		this.url = 'http://booki-backend.dev/api/v1/';
+
 	}
 
-	login(email:string, password:string, rememberme:boolean = false){
-		let data = {
+	public registerUser(){
+		console.log(this.user);
+		/*let data = {
 			email: email,
 			password: password,
 			rememberme: rememberme
@@ -33,7 +39,7 @@ export class Auth {
 							tokenData => {
 								localStorage.setItem('token', tokenData.data.token);
 							}
-						);
+							);*/
 	}
 
 	isAuthenticated():boolean {

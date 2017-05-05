@@ -4,6 +4,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { BookListPage } from '../book-list/book-list';
 import { LoginPage } from '../login/login';
 
+import { User } from '../../models/user';
+
 /*
   Generated class for the Register page.
 
@@ -17,11 +19,18 @@ import { LoginPage } from '../login/login';
 export class RegisterPage {
 	loginPage = LoginPage;
   bookListPage = BookListPage;
+  public user: User;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.user = new User(0, 'Juaco', '', '', '', '', '', '');
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+  }
+
+  public registerUser(){
+    console.log(this.user);
   }
 
 }

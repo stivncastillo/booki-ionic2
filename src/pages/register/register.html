@@ -14,38 +14,27 @@
 
 
 <ion-content>
-	<form>
 		<ion-row>
 			<ion-col>
 				<ion-list>
 					<ion-item>
 						<ion-label floating>Name</ion-label>
-						<ion-input type="text" value=""></ion-input>
+						<ion-input type="text" [(ngModel)]="user.name"></ion-input>
 					</ion-item>
 
 					<ion-item>
 						<ion-label floating>Email</ion-label>
-						<ion-input type="email" value=""></ion-input>
-					</ion-item>
-
-					<ion-item>
-						<ion-label floating>Bithday</ion-label>
-						  <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
-					</ion-item>
-
-					<ion-item>
-						<ion-label floating>Username</ion-label>
-						<ion-input type="text" value=""></ion-input>
+						<ion-input type="email" [(ngModel)]="user.email"></ion-input>
 					</ion-item>
 
 					<ion-item>
 						<ion-label floating>Password</ion-label>
-						<ion-input type="password" value=""></ion-input>
+						<ion-input type="password" [(ngModel)]="user.password"></ion-input>
 					</ion-item>
 
 					<ion-item>
 						<ion-label floating>Confirm Password</ion-label>
-						<ion-input type="password" value=""></ion-input>
+						<ion-input type="password" [(ngModel)]="user.confirm_password"></ion-input>
 					</ion-item>
 
 					<ion-list radio-group>
@@ -65,10 +54,9 @@
 
 		<ion-row>
 			<ion-col>
-				<button ion-button full type="button" [navPush]="bookListPage">Register</button>
+				<button ion-button full (click)="registerUser()">Register</button>
 				<button ion-button color="light" full type="button" [navPush]="loginPage">Sign In</button>
 			</ion-col>
 		</ion-row>
-	</form>
 
 </ion-content>
