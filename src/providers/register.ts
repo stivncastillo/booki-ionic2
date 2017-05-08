@@ -3,49 +3,35 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 
+import { User } from '../models/user';
+
 /*
-  Generated class for the Auth provider.
+  Generated class for the Register provider.
 
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class Auth {
+export class Register {
 	url: string;
+	public user: User;
 
 	constructor(public http: Http) {
 		this.url = 'http://booki-backend.dev/api/v1/';
+
 	}
 
-	login(email:string, password:string, rememberme:boolean = false){
-		let data = {
-			email: email,
-			password: password,
-			rememberme: rememberme
-		};
-
+	public register(user: User){
 		let headers = new Headers({ 'Accept': 'application/json', 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });
 
-		return this.http.post(this.url + 'login', data, options)
+		return this.http.post(this.url + 'register', user, options)
 						.map(res => res.json())
 						.do(
 							result => {
 								localStorage.setItem('token', result.data.token);
 							}
 						);
-	}
-
-	isAuthenticated():boolean {
-		if (localStorage.getItem('token') === null){
-			return false;
-		}
-
-		return true;
-	}
-
-	getToken() {
-		return localStorage.getItem('token');
 	}
 
 }

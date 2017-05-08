@@ -14,50 +14,35 @@
 
 
 <ion-content>
-	<form>
+	<form [formGroup]="formRegister" (ngSubmit)="onRegister()">
 		<ion-row>
 			<ion-col>
+					
 				<ion-list>
 					<ion-item>
-						<ion-label floating>Name</ion-label>
-						<ion-input type="text" value=""></ion-input>
+						<ion-label floating>First Name</ion-label>
+						<ion-input type="text" formControlName="first_name"></ion-input>
+					</ion-item>
+
+					<ion-item>
+						<ion-label floating>Last Name</ion-label>
+						<ion-input type="text" formControlName="last_name"></ion-input>
 					</ion-item>
 
 					<ion-item>
 						<ion-label floating>Email</ion-label>
-						<ion-input type="email" value=""></ion-input>
-					</ion-item>
-
-					<ion-item>
-						<ion-label floating>Bithday</ion-label>
-						  <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
-					</ion-item>
-
-					<ion-item>
-						<ion-label floating>Username</ion-label>
-						<ion-input type="text" value=""></ion-input>
+						<ion-input type="email" formControlName="email"></ion-input>
 					</ion-item>
 
 					<ion-item>
 						<ion-label floating>Password</ion-label>
-						<ion-input type="password" value=""></ion-input>
+						<ion-input type="password" formControlName="password"></ion-input>
 					</ion-item>
 
 					<ion-item>
 						<ion-label floating>Confirm Password</ion-label>
-						<ion-input type="password" value=""></ion-input>
-					</ion-item>
-
-					<ion-list radio-group>
-						<ion-item>
-							<ion-label>Male</ion-label>
-							<ion-radio value="male" checked></ion-radio>
-						</ion-item>
-						<ion-item>
-							<ion-label>Female</ion-label>
-							<ion-radio value="female"></ion-radio>
-						</ion-item>
-					</ion-list>
+						<ion-input type="password" formControlName="password_confirmation"></ion-input>
+					</ion-item> 
 
 				</ion-list>
 			</ion-col>
@@ -65,7 +50,7 @@
 
 		<ion-row>
 			<ion-col>
-				<button ion-button full type="button" [navPush]="bookListPage">Register</button>
+				<button ion-button full type="submit" [disabled]="!formRegister.valid">Register</button>
 				<button ion-button color="light" full type="button" [navPush]="loginPage">Sign In</button>
 			</ion-col>
 		</ion-row>

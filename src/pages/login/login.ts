@@ -90,4 +90,8 @@ export class LoginPage {
 		return;
 	}
 
+	showRegister() {
+		this.navCtrl.push('RegisterPage');
+	}
+
 }
