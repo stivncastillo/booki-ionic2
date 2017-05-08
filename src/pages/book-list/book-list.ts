@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, LoadingController, PopoverController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 
 import { BookViewPage } from '../book-view/book-view';
 import { BookFormPage } from '../book-form/book-form';
@@ -35,7 +35,6 @@ export class BookListPage {
 		public navParams: NavParams,
 		public loadingCtrl:LoadingController,
 		public alertCtrl: AlertController,
-		public popoverCtrl: PopoverController,
 		public _bookService: BookService
 	) {
 	}
@@ -82,13 +81,6 @@ export class BookListPage {
 
 		alert.present();
 		return;
-	}
-
-	presentPopover(myEvent) {
-		let popover = this.popoverCtrl.create(PopoverPage);
-		popover.present({
-			ev: myEvent
-		});
 	}
 
 }
