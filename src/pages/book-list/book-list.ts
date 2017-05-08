@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController, PopoverController } from 'ionic-angular';
 
 import { BookViewPage } from '../book-view/book-view';
 import { BookFormPage } from '../book-form/book-form';
@@ -33,14 +33,32 @@ export class BookListPage {
 	constructor(
 		public navCtrl: NavController,
 		public navParams: NavParams,
+		public loadingCtrl:LoadingController,
 		public alertCtrl: AlertController,
+		public popoverCtrl: PopoverController,
 		public _bookService: BookService
 	) {
 	}
 
 	ionViewDidLoad() {
-		console.log('ionViewDidLoad BookListPage');
-		this._bookService.getBooks().subscribe(
+		// Show window loader
+    	let loader = this.loadingCtrl.create({
+			content: "Getting Books"
+		});
+		loader.present();
+
+		this._bookService.getBooks()
+						.subscribe(
+							result  => {
+								loader.dismissAll();
+								this.books = result.data;
+							},
+							error => {
+								loader.dismissAll();
+								console.log(error)
+							});
+
+		/*this._bookService.getBooks().subscribe(
 			result => {
 				if( ! result.success) {
 					this.showError('An error has ocurred');
@@ -52,7 +70,7 @@ export class BookListPage {
 				let dataError = JSON.parse(error._body);
 				this.showError(dataError.errors[0]);
 			}
-		)
+		)*/
 	}
 
 	showError(message:string) {
@@ -64,6 +82,13 @@ export class BookListPage {
 
 		alert.present();
 		return;
+	}
+
+	presentPopover(myEvent) {
+		let popover = this.popoverCtrl.create(PopoverPage);
+		popover.present({
+			ev: myEvent
+		});
 	}
 
 }
