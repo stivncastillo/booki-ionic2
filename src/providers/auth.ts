@@ -30,8 +30,8 @@ export class Auth {
 		return this.http.post(this.url + 'login', data, options)
 						.map(res => res.json())
 						.do(
-							tokenData => {
-								localStorage.setItem('token', tokenData.data.token);
+							result => {
+								localStorage.setItem('token', result.data.token);
 							}
 						);
 	}

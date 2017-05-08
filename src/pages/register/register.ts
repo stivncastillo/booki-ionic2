@@ -39,7 +39,7 @@ export class RegisterPage {
 		private formBuilder: FormBuilder,
 		private _register: Register
 	) {
-
+		// Build form register
 		this.formRegister = this.formBuilder.group({
 			first_name: ['', Validators.required],
 			last_name: ['', Validators.required],
@@ -55,28 +55,27 @@ export class RegisterPage {
 
 	public onRegister(){
 		let dataForm = this.formRegister.value;
-
+		// Show window loader
     	let loader = this.loadingCtrl.create({
 			content: "Logging in..."
 		});
 		loader.present();
-
+		// create user 
     	this.user = new User(0, dataForm.first_name, dataForm.last_name, dataForm.email, dataForm.password, dataForm.password_confirmation, '', '');
-
+    	// consume services register user
     	this._register.register(this.user).subscribe(
 			result => {
 				if(result.success) {
 					loader.dismissAll();
-					console.log(result);
-					// this.navCtrl.setRoot(BookListPage);
+					this.navCtrl.setRoot(BookListPage);
 				}else{
-					this.showError('An error has ocurred');
+					this.showError('An error has ocurred, try later');
 				}
 			},
 
 			error => {
 				loader.dismissAll();
-				console.log(error);
+				this.showError('An error has ocurred, try later');
 			}
 		);
 	}

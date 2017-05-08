@@ -29,7 +29,7 @@ export class Register {
 						.map(res => res.json())
 						.do(
 							result => {
-								console.log(result);
+								localStorage.setItem('token', result.data.token);
 							}
 						);
 	}
